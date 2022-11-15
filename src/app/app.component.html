@@ -1,0 +1,565 @@
+<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+<!-- * * * * * * * * * * * The content below * * * * * * * * * * * -->
+<!-- * * * * * * * * * * is only a placeholder * * * * * * * * * * -->
+<!-- * * * * * * * * * * and can be replaced. * * * * * * * * * * * -->
+<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+<!-- * * * * * * * * * Delete the template below * * * * * * * * * * -->
+<!-- * * * * * * * to get started with your project! * * * * * * * * -->
+<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+
+<style>
+  :host {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    font-size: 14px;
+    color: #333;
+    box-sizing: border-box;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    margin: 8px 0;
+  }
+
+  p {
+    margin: 0;
+  }
+
+  .spacer {
+    flex: 1;
+  }
+
+  .toolbar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    background-color: #1976d2;
+    color: white;
+    font-weight: 600;
+  }
+
+  .toolbar img {
+    margin: 0 16px;
+  }
+
+  .toolbar #twitter-logo {
+    height: 40px;
+    margin: 0 8px;
+  }
+
+  .toolbar #youtube-logo {
+    height: 40px;
+    margin: 0 16px;
+  }
+
+  .toolbar #twitter-logo:hover,
+  .toolbar #youtube-logo:hover {
+    opacity: 0.8;
+  }
+
+  .content {
+    display: flex;
+    margin: 82px auto 32px;
+    padding: 0 16px;
+    max-width: 960px;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  svg.material-icons {
+    height: 24px;
+    width: auto;
+  }
+
+  svg.material-icons:not(:last-child) {
+    margin-right: 8px;
+  }
+
+  .card svg.material-icons path {
+    fill: #888;
+  }
+
+  .card-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 16px;
+  }
+
+  .card {
+    all: unset;
+    border-radius: 4px;
+    border: 1px solid #eee;
+    background-color: #fafafa;
+    height: 40px;
+    width: 200px;
+    margin: 0 8px 16px;
+    padding: 16px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.2s ease-in-out;
+    line-height: 24px;
+  }
+
+  .card-container .card:not(:last-child) {
+    margin-right: 0;
+  }
+
+  .card.card-small {
+    height: 16px;
+    width: 168px;
+  }
+
+  .card-container .card:not(.highlight-card) {
+    cursor: pointer;
+  }
+
+  .card-container .card:not(.highlight-card):hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 17px rgba(0, 0, 0, 0.35);
+  }
+
+  .card-container .card:not(.highlight-card):hover .material-icons path {
+    fill: rgb(105, 103, 103);
+  }
+
+  .card.highlight-card {
+    background-color: #1976d2;
+    color: white;
+    font-weight: 600;
+    border: none;
+    width: auto;
+    min-width: 30%;
+    position: relative;
+  }
+
+  .card.card.highlight-card span {
+    margin-left: 60px;
+  }
+
+  svg#rocket {
+    width: 80px;
+    position: absolute;
+    left: -10px;
+    top: -24px;
+  }
+
+  svg#rocket-smoke {
+    height: calc(100vh - 95px);
+    position: absolute;
+    top: 10px;
+    right: 180px;
+    z-index: -10;
+  }
+
+  a,
+  a:visited,
+  a:hover {
+    color: #1976d2;
+    text-decoration: none;
+  }
+
+  a:hover {
+    color: #125699;
+  }
+
+  .terminal {
+    position: relative;
+    width: 80%;
+    max-width: 600px;
+    border-radius: 6px;
+    padding-top: 45px;
+    margin-top: 8px;
+    overflow: hidden;
+    background-color: rgb(15, 15, 16);
+  }
+
+  .terminal::before {
+    content: "\2022 \2022 \2022";
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 4px;
+    background: rgb(58, 58, 58);
+    color: #c2c3c4;
+    width: 100%;
+    font-size: 2rem;
+    line-height: 0;
+    padding: 14px 0;
+    text-indent: 4px;
+  }
+
+  .terminal pre {
+    font-family: SFMono-Regular,Consolas,Liberation Mono,Menlo,monospace;
+    color: white;
+    padding: 0 1rem 1rem;
+    margin: 0;
+  }
+
+  .circle-link {
+    height: 40px;
+    width: 40px;
+    border-radius: 40px;
+    margin: 8px;
+    background-color: white;
+    border: 1px solid #eeeeee;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+    transition: 1s ease-out;
+  }
+
+  .circle-link:hover {
+    transform: translateY(-0.25rem);
+    box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.2);
+  }
+
+  footer {
+    margin-top: 8px;
+    display: flex;
+    align-items: center;
+    line-height: 20px;
+  }
+
+  footer a {
+    display: flex;
+    align-items: center;
+  }
+
+  .github-star-badge {
+    color: #24292e;
+    display: flex;
+    align-items: center;
+    font-size: 12px;
+    padding: 3px 10px;
+    border: 1px solid rgba(27,31,35,.2);
+    border-radius: 3px;
+    background-image: linear-gradient(-180deg,#fafbfc,#eff3f6 90%);
+    margin-left: 4px;
+    font-weight: 600;
+  }
+
+  .github-star-badge:hover {
+    background-image: linear-gradient(-180deg,#f0f3f6,#e6ebf1 90%);
+    border-color: rgba(27,31,35,.35);
+    background-position: -.5em;
+  }
+
+  .github-star-badge .material-icons {
+    height: 16px;
+    width: 16px;
+    margin-right: 4px;
+  }
+
+  svg#clouds {
+    position: fixed;
+    bottom: -160px;
+    left: -230px;
+    z-index: -10;
+    width: 1920px;
+  }
+
+  /* Responsive Styles */
+  @media screen and (max-width: 767px) {
+    .card-container > *:not(.circle-link) ,
+    .terminal {
+      width: 100%;
+    }
+
+    .card:not(.highlight-card) {
+      height: 16px;
+      margin: 8px 0;
+    }
+
+    .card.highlight-card span {
+      margin-left: 72px;
+    }
+
+    svg#rocket-smoke {
+      right: 120px;
+      transform: rotate(-5deg);
+    }
+  }
+
+  @media screen and (max-width: 575px) {
+    svg#rocket-smoke {
+      display: none;
+      visibility: hidden;
+    }
+  }
+</style>
+
+<!-- Toolbar -->
+<div class="head">
+  <nav class = "navbar">
+     <div class = "logo">
+       <a>
+          <img src= 'images/Central-Uni-logo.png'>
+       </a>
+     </div>
+     <div class = "search">
+       <div class = "searchcontainer" >
+         <input placeholder='Search'/><i class='bx bx-search'></i>
+       </div>
+     </div>
+     <div class = "menu">
+       <div class = "menucontainer">
+           <ul>
+             <li><a href="" >Home</a></li>
+             <li><a href="" >Gallery</a></li>
+             <li><a href="" >Alumni</a><i class="bx bx-caret-down"></i></li>
+             <li><a href="" >Corporate</a></li>
+             <li><a href="" >CU Maps</a></li>
+           </ul>
+       </div>
+     </div>
+     <div class = "btn">
+       <div onclick="menuOpen()"></div>
+     </div>
+   </nav>
+
+   <section class = "Hero">
+       <div class = "heroContainer">
+          <div class= "slider">
+              <div class= "pictures">
+                   <img src='https://img.freepik.com/free-photo/smiling-african-student-pointing-with-pencil-laptop-screen-concentrated-blonde-woman-glasses-propping-chin-with-hand-while-working-with-computer-office_197531-3714.jpg?w=1060&t=st=1668356810~exp=1668357410~hmac=c287b1ba65d07c19e6da4a502bd93109581c02d58979daeca26ed41b8705bfc9' />
+              </div>
+              
+          </div>
+       </div>
+   </section>
+<!-- Menuu -->
+<div class="Menu">
+  <div class="closeBtn">
+    <span onclick="closeBtn()"><i class="bx bx-plus"></i></span>
+  </div>
+  <div class= "MenuContainerr">
+      <div class="menutitle">
+        <h1>Navigate CU</h1>
+      </div>
+      <div class="menunavigations">
+        <div class="ul">
+        <ul id="above">
+          <ul>
+            <li><a id= "about">About CU</a></li>
+            <li><div id="line"></div></li>
+            <li><a>University Council</a></li>
+            <li><a>Offices of the Authorities</a></li>
+            <li><a>Job Vacancies</a></li>
+            <li><a>Vision, Mission & Core Values</a></li>
+            <li><a>Contact Us</a></li>
+            <li><a>More <i class="bx bx-caret-right"></i></a></li>
+          </ul>
+          <ul>
+            <li><a id= "about">Schools</a></li>
+            <li><div id="line"></div></li>
+            <li><a>Undergraduate</a></li>
+            <li><a>Graduate</a></li>
+            <li><a>Student Support</a></li>
+            <li><a>William O-A Institue of Integrity </a></li>
+            <li><a>More <i class="bx bx-caret-right"></i></a></li>
+          </ul>
+          <ul>
+            <li><a id= "about">International</a></li>
+            <li><div id="line"></div></li>
+            <li><a>Fees</a></li>
+            <li><a>Student Life</a></li>
+            <li><a>Partnership</a></li>
+            <li><a>Your Country</a></li>
+            <li><a>More <i class="bx bx-caret-right"></i></a></li>
+          </ul>
+          <ul>
+            <li><a id= "about">Admissions</a></li>
+            <li><div id="line"></div></li>
+            <li><a>How to Apply</a></li>
+            <li><a>International info and Scholarship</a></li>
+            <li><a>Admission Forms 2022/2023</a></li>
+            <li><a>Campus Life</a></li>
+            <li><a>More <i class="bx bx-caret-right"></i></a></li>
+          </ul>
+        </ul>
+        <ul id="bottom">
+          <ul>
+            <li><a id= "about">Chaplaincy</a></li>
+            <li><div id="line"></div></li>
+            <li><a>Navigations</a></li>
+            <li><a>Navigations</a></li>
+            <li><a>Navigations</a></li>
+            <li><a>Navigations</a></li>
+            <li><a>Navigations</a></li>
+            <li><a>More <i class="bx bx-caret-right"></i></a></li>
+          </ul>
+          <ul>
+            <li><a id= "about">Research</a></li>
+            <li><div id="line"></div></li>
+            <li><a>Navigations</a></li>
+            <li><a>Navigations</a></li>
+            <li><a>Navigations</a></li>
+            <li><a>Navigations</a></li>
+            <li><a>Navigations</a></li>
+            <li><a>More <i class="bx bx-caret-right"></i></a></li>
+          </ul>
+          <ul>
+            <li><a id= "about">Publications</a></li>
+            <li><div id="line"></div></li>
+            <li><a>Navigations</a></li>
+            <li><a>Navigations</a></li>
+            <li><a>Navigations</a></li>
+            <li><a>Navigations</a></li>
+            <li><a>Navigations</a></li>
+            <li><a>More <i class="bx bx-caret-right"></i></a></li>
+          </ul>
+          <ul>
+            <li><a id= "about">Library</a></li>
+            <li><div id="line"></div></li>
+            <li><a>Navigations</a></li>
+            <li><a>Navigations</a></li>
+            <li><a>Navigations</a></li>
+            <li><a>Navigations</a></li>
+            <li><a>Navigations</a></li>
+            <li><a>More <i class="bx bx-caret-right"></i></a></li>
+          </ul>
+        </ul>
+        </div>
+      </div>
+      <div class="underbar">
+         <div class="underbarContainer">
+            <div class="pic">
+              <img src='images/logo.png'>
+              <p>Central Univeristy Student and Visitors Information Panel.</p>
+            </div>
+            <div class="link">
+              <a href="">Explore More</a>
+            </div>
+         </div>
+      </div>
+  </div>
+  <div class="liness"></div>
+ <div class="event">
+          <div class="eventContainer">
+            <div class="card">
+            <span>A Very Important Information or Event</span>
+            </div>
+            <div class="sub">
+              <div class="lines"></div>
+              <span>Central University College</span>
+            </div>
+          </div>
+        </div>
+   </div>
+
+<!-- Menu -->
+<section class= "dreams">
+  <div class="section">
+    <div class="sectionContainer">
+    <h1>Academic</h1>
+    <ul>
+    <span>Arts</span>
+    <span>Science</span>
+    <span>Business</span>
+    <span>Engineering</span>
+    <span>Law</span>
+    <span>Health</span>
+    </ul>
+    </div>
+  </div>
+</section>
+<section class="newsLetter">
+  <div class="body">
+      <div class="containerrr">
+          <div class="headd">
+              <h1>CU NewsRoom</h1>
+          </div>
+          <div class="newsletter">
+             
+              <div class="news" id="two">
+                  <div class="pics"><img src="images\cheerful-african-american-guy-graduation-costume-cheerful-african-american-guy-graduation-costume-showing-his-diploma-215746359.jpg" alt=""></div>
+                  <div class="words">
+                      <h4 id="head">News Title</h4>
+                      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut ullam neque incidunt saepe culpa eveniet iste nemo vel null aperiam expedita impedi...
+                      </p>
+                      <a href="#">Read More</a>
+                      <div class="carousel">
+                          <div class="page">
+                          </div>
+                          <span id="date">10.Nov.2022</span>
+                      </div>
+                  </div>
+              </div>
+              <div class="news" id="two">
+                  <div class="pics"><img src="images/CU_Prospectus.jpg" alt=""></div>
+                  <div class="words">
+                      <h4>News Title</h4>
+                      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut ullam neque incidunt saepe culpa eveniet iste nemo vel null aperiam expedita impedi...
+                      </p>
+                      <a href="#">Read More</a>
+                      <div class="carousel">
+                          <div class="page">
+                          </div>
+                          <span id="date">10.Nov.2022</span>
+                      </div>
+                  </div>
+              </div>
+              
+              <div class="news" id="two">
+                  <div class="pics"><img src="images/CU_Prospectus.jpg" alt=""/></div>
+                  <div class="words">
+                      <h4>News Title</h4>
+                      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut ullam neque incidunt saepe culpa eveniet iste nemo vel null aperiam expedita impedi...
+                      </p>
+                      <a href="#">Read More</a>
+                      <div class="carousel">
+                          <div class="page">
+                          </div>
+                          <span id="date">10.Nov.2022</span>
+                      </div>
+                  </div>
+              </div>
+              <div class="news" id="two">
+                  <div class="pics"><img src="images/cheerful-african-american-guy-graduation-costume-cheerful-african-american-guy-graduation-costume-showing-his-diploma-215746359.jpg" alt=""/></div>
+                  <div class="words">
+                      <h4>News Title</h4>
+                      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut ullam neque incidunt saepe culpa eveniet iste nemo vel null aperiam expedita impedi...
+                      </p>
+                      <a href="#">Read More</a>
+                      <div class="carousel">
+                          <div class="page">
+                          </div>
+                          <span id="date">10.Nov.2022</span>
+                      </div>
+                  </div>
+              </div>
+          </div>
+          <div class="subscribe">
+              <div class="contain">
+                  <input type="email" placeholder="Join our Newsletter"/>
+                  <button><i class='bx bxs-send'></i></button>
+              </div>
+          </div>
+      </div>
+  </div>
+  </section>
+<footer>
+  <div class="school">
+       <div class="p">
+        <div class="pContainer">
+        <img src="images/logo.png">
+        </div>
+       </div>
+  </div>
+</footer>
+
+<router-outlet></router-outlet>
